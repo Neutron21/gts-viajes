@@ -1,0 +1,119 @@
+// Variables globales
+$font-serif-elegant: 'Playfair Display', serif
+$font-jakarta: 'Plus Jakarta Sans', sans-serif
+$color-primary: #24385b
+$color-accent: #d99b2b
+$color-white: #ffffff
+
+.navbar
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 24px 60px
+  background: $color-white
+  border-bottom: 1px solid #e5e5e5
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 1000
+  box-sizing: border-box
+
+  &__logo
+    font-family: $font-serif-elegant
+    font-size: 42px
+    font-weight: 700
+    a
+      text-decoration: none
+      color: $color-primary
+      cursor: pointer
+      transition: opacity 0.3s ease
+      &:hover
+        opacity: 0.85
+    span
+      color: $color-accent
+
+  &__menu
+    display: flex
+    align-items: center
+    gap: 50px
+    list-style: none
+    margin: 0
+    padding: 0
+
+  &__item
+    a
+      font-family: $font-jakarta
+      text-decoration: none
+      color: $color-primary
+      font-size: 18px
+      font-weight: 600
+      transition: .3s ease
+      &:hover, &.active
+        color: $color-accent
+
+  &__button
+    font-family: $font-jakarta
+    background: $color-accent
+    color: $color-white
+    text-decoration: none
+    padding: 16px 28px
+    border-radius: 12px
+    font-weight: 600
+    transition: .3s ease
+    &:hover
+      opacity: .9
+
+  &__toggle
+    display: none
+    flex-direction: column
+    gap: 5px
+    background: none
+    border: none
+    cursor: pointer
+    span
+      width: 25px
+      height: 3px
+      background: $color-primary
+      border-radius: 2px
+
+// --- ESTILOS MÓVILES ---
+@media (max-width: 768px)
+  .navbar
+    padding: 20px
+
+  .navbar__toggle
+    display: flex
+
+  .navbar__menu
+    display: none
+    position: absolute
+    top: 100%
+    left: 0
+    width: 100%
+    background: $color-white
+    flex-direction: column
+    padding: 20px
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1)
+    
+    // Se activa con Angular [class.show-menu]
+    &.show-menu
+      display: flex
+
+  .navbar__item
+    margin: 10px 0
+    text-align: center
+
+  .navbar__button
+    background: transparent !important
+    color: $color-primary !important
+    padding: 0 !important
+    border-radius: 0 !important
+    box-shadow: none !important
+    font-weight: 600
+    display: inline-block
+    width: auto
+    &:hover
+      background: transparent !important
+      color: $color-accent !important
+      opacity: 1

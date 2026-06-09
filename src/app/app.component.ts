@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gts-viajes';
+  menuVisible = false;
+
+  // Alterna el menú (Abrir/Cerrar)
+  toggleMenu() {
+    this.menuVisible = !this.menuVisible;
+  }
+
+  // Cierra el menú explícitamente al navegar
+  closeMenu() {
+    this.menuVisible = false;
+  }
 }

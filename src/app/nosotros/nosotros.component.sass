@@ -1,0 +1,286 @@
+// Variables globales coordinadas con tu proyecto
+$font-serif-elegant: 'Playfair Display', serif
+$font-urbanist: 'Urbanist', sans-serif
+$font-jakarta: 'Plus Jakarta Sans', sans-serif
+$color-primary: #24385b   // Tu azul profundo de fondo
+$color-accent: #d99b2b    // Tu dorado insignia
+$color-white: #ffffff
+$color-text-light: rgba(255, 255, 255, 0.75)
+
+.about-us
+  background-color: $color-primary
+  padding: 100px 60px
+  width: 100%
+  box-sizing: border-box
+  overflow: hidden
+
+  &__container
+    max-width: 1200px
+    margin: 0 auto
+    display: grid
+    grid-template-columns: 1.1fr 0.9fr // La columna de textos es ligeramente más ancha
+    gap: 80px
+    align-items: center
+
+  &__header
+    margin-bottom: 40px
+
+  &__title
+    font-family: $font-serif-elegant
+    font-size: 48px
+    font-weight: 700
+    color: $color-white
+    margin: 0 0 16px 0
+    line-height: 1.2
+
+  &__divider
+    width: 60px
+    height: 4px
+    background-color: $color-accent
+    margin-bottom: 24px
+    border-radius: 2px
+
+  &__description
+    font-family: $font-jakarta
+    font-size: 16px
+    color: $color-text-light
+    line-height: 1.6
+    margin: 0
+
+  &__features-list
+    list-style: none
+    padding: 0
+    margin: 0
+    display: flex
+    flex-direction: column
+    gap: 28px
+
+  // Contenedor multimedia del bloque derecho
+  &__media
+    display: flex
+    justify-content: flex-end
+    width: 100%
+
+  &__image-wrapper
+    position: relative
+    width: 100%
+    max-width: 460px // Mantiene la forma estilizada vertical del mockup
+
+// Estilos de los ítems de características (BEM)
+.feature-item
+  display: flex
+  align-items: flex-start
+  gap: 20px
+
+  &__icon-wrapper
+    width: 44px
+    height: 44px
+    background-color: rgba($color-white, 0.08)
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-shrink: 0
+    
+    svg
+      width: 20px
+      height: 20px
+      color: $color-accent // Iconos dorados lineales muy limpios
+
+  &__text
+    text-align: left
+
+  &__title
+    font-family: $font-serif-elegant
+    font-size: 20px
+    font-weight: 700
+    color: $color-white
+    margin: 0 0 6px 0
+
+  &__desc
+    font-family: $font-jakarta
+    font-size: 14px
+    color: $color-text-light
+    margin: 0
+    line-height: 1.4
+
+// Imagen principal y Tarjeta de Testimonio Flotante
+.about-us__main-image
+  width: 100%
+  height: 580px
+  object-fit: cover
+  border-radius: 32px // Esquinas muy redondeadas como la captura
+
+.testimonial-card
+  position: absolute
+  bottom: -30px // Sobresale ligeramente del borde inferior como tu mockup
+  left: -40px  // Se desplaza hacia la izquierda encimándose en el fondo azul
+  background-color: $color-white
+  padding: 32px
+  border-radius: 24px
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15)
+  width: 100%
+  max-width: 340px
+  box-sizing: border-box
+  z-index: 10
+  text-align: left
+
+  &__stars
+    color: $color-accent
+    font-size: 18px
+    margin-bottom: 16px
+    display: flex
+    gap: 2px
+
+  &__quote
+    font-family: $font-serif-elegant
+    font-size: 18px
+    font-style: italic
+    font-weight: 500
+    color: $color-primary
+    line-height: 1.4
+    margin: 0 0 16px 0
+
+  &__author
+    font-family: $font-jakarta
+    font-size: 13px
+    font-weight: 700
+    color: $color-primary
+    opacity: 0.8
+    font-style: normal
+
+// Adaptabilidad Móvil y Tablet
+@media (max-width: 1024px)
+  .about-us
+    padding: 80px 40px
+    &__container
+      grid-template-columns: 1fr // Pasa a una sola columna
+      gap: 60px
+
+    &__image-wrapper
+      max-width: 100%
+      height: 500px
+      
+    &__main-image
+      height: 100%
+
+  .testimonial-card
+    left: 24px
+    bottom: 24px
+    max-width: 280px
+
+@media (max-width: 768px)
+  .about-us
+    padding: 60px 20px
+    &__title
+      font-size: 36px
+
+// Variables de soporte (si ya están arriba, no las dupliques)
+$font-serif-elegant: 'Playfair Display', serif
+$font-jakarta: 'Plus Jakarta Sans', sans-serif
+$color-primary: #24385b
+$color-accent: #d99b2b
+$color-bg-light: #f9f6f0
+$color-white: #ffffff
+$color-text-muted: #4a5568
+
+.testimonios
+  background-color: $color-bg-light
+  padding: 100px 60px
+  width: 100%
+  box-sizing: border-box
+
+  &__container
+    max-width: 1200px
+    margin: 0 auto
+    text-align: center
+
+  &__header
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-bottom: 60px
+
+  &__title
+    font-family: $font-serif-elegant
+    font-size: 48px
+    font-weight: 700
+    color: $color-primary
+    margin: 0 0 16px 0
+
+  &__divider
+    width: 60px
+    height: 4px
+    background-color: $color-accent
+    border-radius: 2px
+
+  &__grid
+    display: grid
+    grid-template-columns: repeat(3, 1fr) // 3 columnas para las tarjetas
+    gap: 32px
+    width: 100%
+
+// Tarjeta de opinión individual
+.testimonio-card
+  background-color: transparent
+  border: 1px solid rgba($color-primary, 0.08) // Un borde muy sutil
+  background-color: rgba($color-white, 0.4) // Un fondo blanco ligerito traslúcido
+  padding: 40px
+  border-radius: 24px
+  box-sizing: border-box
+  display: flex
+  flex-direction: column
+  text-align: left
+  min-height: 320px
+  justify-content: space-between // Separa el texto superior del autor abajo
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+
+  &:hover
+    transform: translateY(-5px)
+    box-shadow: 0 15px 35px rgba($color-primary, 0.06)
+    background-color: $color-white // Se vuelve sólida al pasar el mouse
+
+  &__stars
+    color: $color-accent
+    font-size: 16px
+    margin-bottom: 24px
+    display: flex
+    gap: 4px
+
+  &__text
+    font-family: $font-jakarta
+    font-size: 16px
+    color: $color-text-muted
+    line-height: 1.6
+    margin: 0 0 32px 0
+    font-style: normal
+
+  &__author
+    display: flex
+    flex-direction: column
+    gap: 4px
+    font-style: normal
+
+  &__name
+    font-family: $font-serif-elegant // Nombre en tipografía elegante
+    font-size: 18px
+    font-weight: 700
+    color: $color-primary
+    margin: 0
+
+  &__location
+    font-family: $font-jakarta
+    font-size: 13px
+    font-weight: 600
+    color: $color-accent // Destino en tono dorado
+
+// Comportamiento Responsivo
+@media (max-width: 1024px)
+  .testimonios
+    &__grid
+      grid-template-columns: 1fr
+      gap: 24px
+    
+  .testimonio-card
+    min-height: auto
+    padding: 32px      

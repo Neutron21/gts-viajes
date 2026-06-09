@@ -1,0 +1,202 @@
+// Variables globales coordinadas con Horizonte
+$font-serif-elegant: 'Playfair Display', serif // Tipografía Serif elegante para títulos y números
+$font-urbanist: 'Urbanist', sans-serif
+$font-jakarta: 'Plus Jakarta Sans', sans-serif
+$color-primary: #24385b
+$color-accent: #d99b2b
+$color-bg-light: #f9f6f0 // Fondo crema suave
+$color-white: #ffffff
+$color-text-muted: #4a5568
+
+// Sección Principal de Destinos
+.destinos
+  background-color: $color-bg-light
+  padding: 100px 60px
+  width: 100%
+  box-sizing: border-box
+
+  &__container
+    max-width: 1200px
+    margin: 0 auto
+
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    margin-bottom: 60px
+
+  &__title
+    font-family: $font-serif-elegant // Cambiado a Serif para hacer juego con el mockup
+    font-size: 48px
+    font-weight: 700
+    color: $color-primary
+    margin: 0 0 16px 0
+
+  &__subtitle
+    font-family: $font-jakarta
+    font-size: 18px
+    color: $color-text-muted
+    max-width: 600px
+    margin: 0
+    line-height: 1.5
+
+  &__link
+    font-family: $font-jakarta
+    font-size: 16px
+    color: $color-accent
+    text-decoration: none
+    font-weight: 600
+    display: flex
+    align-items: center
+    gap: 8px
+    transition: color 0.3s ease
+
+    &:hover
+      color: darken($color-accent, 10%)
+
+    .destinos__arrow
+      font-weight: 400
+      font-size: 18px
+
+  &__grid
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    gap: 32px
+    width: 100%
+
+// Estilos BEM para las tarjetas de Destinos
+.destinos-card
+  position: relative
+  height: 480px
+  border-radius: 28px
+  overflow: hidden
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05)
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+  cursor: pointer
+
+  &:hover
+    transform: translateY(-5px)
+    box-shadow: 0 15px 40px rgba($color-primary, 0.15)
+    
+    .destinos-card__image
+      transform: scale(1.05)
+
+  &__image
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+    z-index: 1
+    transition: transform 0.3s ease
+
+  &__overlay
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%)
+    z-index: 2
+    display: flex
+    align-items: flex-end
+
+  &__content
+    width: 100%
+    padding: 32px
+    box-sizing: border-box
+    text-align: left
+
+  &__tag
+    display: inline-block
+    font-family: $font-jakarta
+    font-size: 12px
+    font-weight: 700
+    color: $color-accent
+    letter-spacing: 1px
+    text-transform: uppercase
+    margin-bottom: 12px
+
+  &__name
+    font-family: $font-serif-elegant // Cambiado a Serif para igualar la captura exacta
+    font-size: 28px
+    font-weight: 700
+    color: $color-white
+    line-height: 1.2
+    margin: 0
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
+
+// Franja Dorada de Estadísticas (Añadida abajo de los destinos)
+.stats-bar
+  background-color: $color-accent
+  width: 100%
+  padding: 60px 40px
+  box-sizing: border-box
+
+  &__container
+    max-width: 1200px
+    margin: 0 auto
+    display: flex
+    justify-content: space-around
+    align-items: center
+    gap: 40px
+
+.stats-item
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: center
+  color: $color-white
+
+  &__number
+    font-family: $font-serif-elegant // Fuente idéntica a la imagen
+    font-size: 58px
+    font-weight: 700
+    line-height: 1
+    margin-bottom: 8px
+    letter-spacing: -0.5px
+
+  &__label
+    font-family: $font-jakarta
+    font-size: 13px
+    font-weight: 600
+    letter-spacing: 1.5px
+    opacity: 0.9
+
+// Adaptabilidad Móvil y Tablet (Estructuras de Media Queries limpias)
+@media (max-width: 1200px)
+  .destinos
+    &__grid
+      grid-template-columns: repeat(2, 1fr)
+
+@media (max-width: 768px)
+  .destinos
+    padding: 60px 20px
+    &__header
+      flex-direction: column
+      align-items: flex-start
+      gap: 20px
+    &__title
+      font-size: 36px
+    &__grid
+      grid-template-columns: 1fr
+      gap: 20px
+    &__link
+      align-self: flex-end
+
+  .destinos-card
+    height: 380px
+
+  .stats-bar
+    padding: 40px 20px
+    &__container
+      display: grid
+      grid-template-columns: repeat(2, 1fr) // Formato 2x2 en móviles
+      gap: 32px 20px
+
+  .stats-item
+    &__number
+      font-size: 42px
+    &__label
+      font-size: 11px

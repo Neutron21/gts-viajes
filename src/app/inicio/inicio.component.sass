@@ -1,0 +1,168 @@
+// Variables de estilo
+$font-serif-elegant: 'Playfair Display', serif
+$font-urbanist: 'Urbanist', sans-serif
+$font-jakarta: 'Plus Jakarta Sans', sans-serif
+$color-accent: #d99b2b
+$color-white: #ffffff
+
+// Asegura que el componente de Angular abarque todo el espacio disponible
+:host
+  display: block
+  width: 100%
+
+.hero-container
+  position: relative
+  width: 100%
+  height: 100vh
+  overflow: hidden
+
+.hero-image
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  object-fit: cover
+  object-position: center
+  z-index: 1
+  // Forzamos la animación con prefijo por si acaso
+  -webkit-animation: kenBurnsVideoEffect 20s ease-in-out infinite alternate
+  animation: kenBurnsVideoEffect 20s ease-in-out infinite alternate
+
+.hero-overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: linear-gradient(180deg, rgba(20, 32, 53, 0.4) 0%, rgba(20, 32, 53, 0.65) 100%)
+  z-index: 2
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  padding: 0 24px
+
+.hero-content
+  position: relative
+  max-width: 850px
+  z-index: 3
+
+  &__title
+    font-family: $font-serif-elegant
+    font-size: 64px
+    font-weight: 700
+    line-height: 1.15
+    color: $color-white
+    margin-bottom: 24px
+    letter-spacing: -0.5px
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3)
+
+    &--highlight
+      color: $color-accent
+      font-style: italic
+      font-weight: 500
+
+  &__text
+    font-family: $font-jakarta
+    font-size: 19px
+    line-height: 1.6
+    color: rgba($color-white, 0.9)
+    margin-bottom: 48px
+    font-weight: 400
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3)
+
+  &__actions
+    display: flex
+    gap: 20px
+    justify-content: center
+
+  &__button
+    font-family: $font-jakarta
+    font-size: 16px
+    font-weight: 600
+    text-decoration: none
+    padding: 16px 36px
+    border-radius: 50px
+    transition: all 0.3s ease
+
+    &--primary
+      background-color: $color-accent
+      color: $color-white
+      box-shadow: 0 4px 14px rgba($color-accent, 0.4)
+
+      &:hover
+        background-color: lighten($color-accent, 5%)
+        transform: translateY(-3px)
+        box-shadow: 0 6px 20px rgba($color-accent, 0.6)
+
+    &--secondary
+      background-color: rgba($color-white, 0.15)
+      color: $color-white
+      border: 1px solid rgba($color-white, 0.3)
+      backdrop-filter: blur(8px)
+      -webkit-backdrop-filter: blur(8px)
+
+      &:hover
+        background-color: rgba($color-white, 0.25)
+        transform: translateY(-3px)
+
+  &__scroll
+    position: absolute
+    bottom: 40px
+    left: 50%
+    transform: translateX(-50%)
+
+    .mouse
+      width: 26px
+      height: 42px
+      border: 2px solid rgba($color-white, 0.6)
+      border-radius: 20px
+      display: flex
+      justify-content: center
+      padding-top: 8px
+
+    .wheel
+      width: 4px
+      height: 8px
+      background-color: $color-white
+      border-radius: 2px
+      animation: scrollDrop 1.6s infinite
+
+// --- KEYFRAMES COMPILADOS DESDE LA RAÍZ REAL ---
+
+@-webkit-keyframes kenBurnsVideoEffect
+  0%
+    -webkit-transform: scale(1) translate(0, 0)
+    transform: scale(1) translate(0, 0)
+  100%
+    -webkit-transform: scale(1.08) translate(-1%, -1%)
+    transform: scale(1.08) translate(-1%, -1%)
+
+@keyframes kenBurnsVideoEffect
+  0%
+    transform: scale(1) translate(0, 0)
+  100%
+    transform: scale(1.08) translate(-1%, -1%)
+
+@keyframes scrollDrop
+  0%
+    opacity: 0
+    transform: translateY(-4px)
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+    transform: translateY(8px)
+
+@media (max-width: 768px)
+  .hero-content
+    &__title
+      font-size: 42px
+    &__text
+      font-size: 16px
+      br
+        display: none
+    &__actions
+      flex-direction: column
+      gap: 15px

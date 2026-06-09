@@ -1,0 +1,225 @@
+// Variables globales integradas
+$font-serif-elegant: 'Playfair Display', serif
+$font-jakarta: 'Plus Jakarta Sans', sans-serif
+$color-primary: #24385b   // Azul Profundo
+$color-accent: #d99b2b    // Dorado Insignia
+$color-btn-orange: #e8a043 // Tono naranja brillante del botón del mockup
+$color-bg-light: #f9f6f0   // Fondo crema suave de la sección
+$color-white: #ffffff
+$color-text-muted: #4a5568
+$color-border: #e2e8f0
+
+.quote-section
+  background-color: $color-bg-light
+  padding: 100px 60px
+  width: 100%
+  box-sizing: border-box
+
+  &__container
+    max-width: 1200px
+    margin: 0 auto
+
+// Bloque de la tarjeta contenedora duotono
+.quote-card
+  display: grid
+  grid-template-columns: 0.85fr 1.15fr // División proporcional idéntica al mockup
+  background-color: $color-white
+  border-radius: 32px
+  overflow: hidden
+  box-shadow: 0 20px 50px rgba($color-primary, 0.08)
+  width: 100%
+
+  // Panel Azul Izquierdo
+  &__sidebar
+    background-color: $color-primary
+    padding: 64px 48px
+    color: $color-white
+    display: flex
+    flex-direction: column
+    text-align: left
+
+  &__title
+    font-family: $font-serif-elegant
+    font-size: 38px
+    font-weight: 700
+    line-height: 1.2
+    margin: 0 0 20px 0
+
+  &__subtitle
+    font-family: $font-jakarta
+    font-size: 15px
+    line-height: 1.6
+    opacity: 0.8
+    margin: 0 0 48px 0
+
+  // Panel Blanco Derecho (Formulario)
+  &__form
+    padding: 64px 56px
+    display: flex
+    flex-direction: column
+    gap: 28px
+    text-align: left
+
+  &__btn
+    font-family: $font-jakarta
+    background-color: $color-btn-orange
+    color: $color-white
+    border: none
+    padding: 18px 32px
+    font-size: 16px
+    font-weight: 600
+    border-radius: 12px
+    cursor: pointer
+    transition: background-color 0.3s ease, transform 0.2s ease
+    width: 100%
+    margin-top: 8px
+
+    &:hover
+      background-color: darken($color-btn-orange, 5%)
+      transform: translateY(-1px)
+
+    &:active
+      transform: translateY(1px)
+
+// Bloque de Canales de Contacto (Sidebar)
+.contact-channels
+  display: flex
+  flex-direction: column
+  gap: 32px
+
+.channel-item
+  display: flex
+  align-items: center
+  gap: 16px
+
+  &__icon
+    width: 44px
+    height: 44px
+    border-radius: 50%
+    background-color: rgba($color-white, 0.1)
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-shrink: 0
+
+    svg
+      width: 20px
+      height: 20px
+      color: $color-accent // Por defecto dorados como tu mockup
+
+    // Ajuste específico para el icono de WhatsApp verde de la captura
+    &--whatsapp svg
+      color: #25d366
+
+  &__content
+    display: flex
+    flex-direction: column
+    gap: 4px
+
+  &__label
+    font-family: $font-jakarta
+    font-size: 13px
+    opacity: 0.6
+    font-weight: 500
+
+  &__value
+    font-family: $font-jakarta
+    font-size: 16px
+    font-weight: 600
+    color: $color-white
+    text-decoration: none
+    transition: opacity 0.2s ease
+
+    &:hover
+      opacity: 0.8
+
+    &--whatsapp
+      color: #25d366 // Mantiene el tono verde brillante para el texto de WhatsApp
+
+// Cuadrícula y Campos del Formulario
+.form-grid
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 24px
+
+.form-group
+  display: flex
+  flex-direction: column
+  gap: 10px
+
+  &--full
+    grid-column: span 2 // Hace que el textarea ocupe las dos columnas
+
+  &__label
+    font-family: $font-jakarta
+    font-size: 14px
+    font-weight: 600
+    color: $color-primary
+
+  &__input,
+  &__select,
+  &__textarea
+    font-family: $font-jakarta
+    font-size: 14px
+    padding: 14px 18px
+    border: 1px solid $color-border
+    border-radius: 10px
+    background-color: $color-white
+    color: $color-primary
+    outline: none
+    box-sizing: border-box
+    transition: border-color 0.3s ease, box-shadow 0.3s ease
+
+    &::placeholder
+      color: #a0aec0
+      opacity: 1
+
+    &:focus
+      border-color: rgba($color-primary, 0.4)
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.05)
+
+  &__textarea
+    height: 110px
+    resize: none
+
+  // Contenedor para la flecha personalizada del select
+  &__select-wrapper
+    position: relative
+    width: 100%
+
+    &::after
+      content: '▼'
+      font-size: 10px
+      color: #a0aec0
+      position: absolute
+      right: 18px
+      top: 50%
+      transform: translateY(-50%)
+      pointer-events: none
+
+  &__select
+    width: 100%
+    appearance: none // Elimina la flecha del sistema para usar la personalizada
+    cursor: pointer
+
+// Adaptabilidad (Responsive)
+@media (max-width: 1024px)
+  .quote-section
+    padding: 60px 20px
+
+  .quote-card
+    grid-template-columns: 1fr // Se apilan verticalmente en tablets y móviles
+    
+    &__sidebar
+      padding: 48px 32px
+      
+    &__form
+      padding: 48px 32px
+
+@media (max-width: 640px)
+  .form-grid
+    grid-template-columns: 1fr // Los inputs se vuelven de una sola columna en móviles
+    
+  .form-group
+    &--full
+      grid-column: span 1
