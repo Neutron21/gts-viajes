@@ -1,7 +1,9 @@
 <nav class="navbar">
-  <div class="navbar__logo">
-    <a href="#inicio" (click)="closeMenu()">Horizonte<span>.</span></a>
-  </div>
+<div class="navbar__logo">
+  <a href="#inicio" (click)="closeMenu()">
+    <img src="assets/logo-gts.png" alt="Logo GTS" class="navbar__logo__img">
+  </a>
+</div>
 
   <button class="navbar__toggle" (click)="toggleMenu()">
     <span></span><span></span><span></span>
@@ -13,8 +15,13 @@
     <li class="navbar__item"><a href="#nosotros" (click)="closeMenu()">Nosotros</a></li>
     
     <li class="navbar__item">
-      <a href="#contacto" class="navbar__button" (click)="closeMenu()">Contáctanos</a>
-    </li>
+<a href="https://travel-agencyweb.com.mx/?whitelabelid=GTS" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="navbar__button" 
+   (click)="closeMenu()">
+   Contáctanos
+</a>    </li>
   </ul>
 </nav>
 
@@ -26,3 +33,7 @@
   <app-contacto id="contacto"></app-contacto>
   <app-footer></app-footer>
 </main>
+
+<a href="https://wa.me/525652418384" target="_blank" class="whatsapp-float">
+  <i class="fab fa-whatsapp"></i> 
+</a>

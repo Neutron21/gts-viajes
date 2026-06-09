@@ -155,14 +155,46 @@ $color-white: #ffffff
     opacity: 0
     transform: translateY(8px)
 
+// --- ESTILOS MÓVILES PARA HERO ---
 @media (max-width: 768px)
+  .hero-container
+    // Asegura que ocupe todo el alto incluso con barras de navegación móviles
+    height: 90vh 
+
   .hero-content
+    padding: 0 15px
+    
     &__title
-      font-size: 42px
+      font-size: 36px // Reducido para que no se desborde
+      margin-bottom: 20px
+      line-height: 1.2
+      margin-right: 29px
+
+      
     &__text
       font-size: 16px
-      br
-        display: none
+      margin-bottom: 30px
+      margin-right: 42px
+
+
+
     &__actions
       flex-direction: column
-      gap: 15px
+      gap: 12px
+      width: 100%
+      max-width: 300px
+      margin: 0 auto
+      margin-right: 82px
+
+
+    &__button
+      width: 100%
+      padding: 14px 20px
+      font-size: 15px
+      text-align: center
+
+    &__scroll
+      bottom: 20px // Un poco más arriba para no chocar con el borde inferior
+      .mouse
+        width: 22px
+        height: 36px
