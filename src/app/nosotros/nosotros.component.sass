@@ -275,12 +275,21 @@ $color-text-muted: #4a5568
     color: $color-accent // Destino en tono dorado
 
 // Comportamiento Responsivo
-@media (max-width: 1024px)
-  .testimonios
-    &__grid
-      grid-template-columns: 1fr
-      gap: 24px
-    
+@media (max-width: 768px)
+  .testimonios__grid
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 20px
+    padding: 0 15px // Un poco de espacio a los lados para que no toquen el borde
+
   .testimonio-card
-    min-height: auto
-    padding: 32px      
+    width: 145%           // Ocupa casi todo el ancho disponible
+    max-width: 450px     // Aumentamos esto para que sean más ANCHAS
+    padding: 30px 25px   // Ajuste de padding interno
+    background-color: white
+
+    
+    &__text
+      margin-bottom: 20px // Reducimos el margen inferior para que no crezcan hacia abajo    
+    
