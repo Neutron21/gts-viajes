@@ -1,20 +1,38 @@
-// Variables de estilo
+// =========================
+// VARIABLES
+// =========================
+
 $font-serif-elegant: 'Playfair Display', serif
 $font-urbanist: 'Urbanist', sans-serif
 $font-jakarta: 'Plus Jakarta Sans', sans-serif
+
 $color-accent: #d99b2b
 $color-white: #ffffff
 
-// Asegura que el componente de Angular abarque todo el espacio disponible
+
+// =========================
+// HOST
+// =========================
+
 :host
   display: block
   width: 100%
+
+
+// =========================
+// HERO CONTAINER
+// =========================
 
 .hero-container
   position: relative
   width: 100%
   height: 100vh
   overflow: hidden
+
+
+// =========================
+// HERO IMAGE
+// =========================
 
 .hero-image
   position: absolute
@@ -25,9 +43,16 @@ $color-white: #ffffff
   object-fit: cover
   object-position: center
   z-index: 1
-  // Forzamos la animación con prefijo por si acaso
-  -webkit-animation: kenBurnsVideoEffect 20s ease-in-out infinite alternate
-  animation: kenBurnsVideoEffect 20s ease-in-out infinite alternate
+
+  filter: brightness(.9)
+
+  -webkit-animation: kenBurnsVideoEffect 28s ease-in-out infinite alternate
+  animation: kenBurnsVideoEffect 28s ease-in-out infinite alternate
+
+
+// =========================
+// OVERLAY
+// =========================
 
 .hero-overlay
   position: absolute
@@ -35,162 +60,288 @@ $color-white: #ffffff
   left: 0
   width: 100%
   height: 100%
-  background: linear-gradient(180deg, rgba(20, 32, 53, 0.4) 0%, rgba(20, 32, 53, 0.65) 100%)
+
+  background: linear-gradient(180deg, rgba(20, 32, 53, 0.35) 0%, rgba(20, 32, 53, 0.7) 100%)
+
+  backdrop-filter: blur(1px)
+
   z-index: 2
+
   display: flex
   align-items: center
   justify-content: center
+
   text-align: center
+
   padding: 0 24px
+
+
+// =========================
+// HERO CONTENT
+// =========================
 
 .hero-content
   position: relative
   max-width: 850px
   z-index: 3
 
+
+  // =========================
+  // TITLE
+  // =========================
+
   &__title
     font-family: $font-serif-elegant
     font-size: 64px
     font-weight: 700
     line-height: 1.15
+
     color: $color-white
+
     margin-bottom: 24px
+
     letter-spacing: -0.5px
+
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3)
+
+    opacity: 0
+    transform: translateY(60px)
+
+    animation: fadeUp 1.2s ease forwards
+    animation-delay: .3s
 
     &--highlight
       color: $color-accent
       font-style: italic
       font-weight: 500
 
+
+  // =========================
+  // TEXT
+  // =========================
+
   &__text
     font-family: $font-jakarta
     font-size: 19px
     line-height: 1.6
+
     color: rgba($color-white, 0.9)
+
     margin-bottom: 48px
+
     font-weight: 400
+
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3)
+
+    opacity: 0
+    transform: translateY(40px)
+
+    animation: fadeUp 1.2s ease forwards
+    animation-delay: .7s
+
+
+  // =========================
+  // ACTIONS
+  // =========================
 
   &__actions
     display: flex
     gap: 20px
     justify-content: center
 
+    opacity: 0
+    transform: translateY(30px)
+
+    animation: fadeUp 1.2s ease forwards
+    animation-delay: 1.1s
+
+
+  // =========================
+  // BUTTONS
+  // =========================
+
   &__button
     font-family: $font-jakarta
     font-size: 16px
     font-weight: 600
+
     text-decoration: none
+
     padding: 16px 36px
+
     border-radius: 50px
-    transition: all 0.3s ease
+
+    transition: all 0.35s ease
 
     &--primary
       background-color: $color-accent
       color: $color-white
+
       box-shadow: 0 4px 14px rgba($color-accent, 0.4)
 
       &:hover
         background-color: lighten($color-accent, 5%)
-        transform: translateY(-3px)
-        box-shadow: 0 6px 20px rgba($color-accent, 0.6)
+
+        transform: translateY(-4px) scale(1.02)
+
+        box-shadow: 0 10px 28px rgba($color-accent, 0.55)
 
     &--secondary
-      background-color: rgba($color-white, 0.15)
+      background-color: rgba($color-white, 0.12)
+
       color: $color-white
-      border: 1px solid rgba($color-white, 0.3)
+
+      border: 1px solid rgba($color-white, 0.25)
+
       backdrop-filter: blur(8px)
       -webkit-backdrop-filter: blur(8px)
 
       &:hover
-        background-color: rgba($color-white, 0.25)
-        transform: translateY(-3px)
+        background-color: rgba($color-white, 0.22)
+
+        transform: translateY(-4px) scale(1.02)
+
+
+  // =========================
+  // SCROLL
+  // =========================
 
   &__scroll
     position: absolute
+
     bottom: 40px
     left: 50%
+
     transform: translateX(-50%)
+
+    opacity: 0
+
+    animation: fadeIn 1.4s ease forwards
+    animation-delay: 1.7s
 
     .mouse
       width: 26px
       height: 42px
+
       border: 2px solid rgba($color-white, 0.6)
       border-radius: 20px
+
       display: flex
       justify-content: center
+
       padding-top: 8px
 
     .wheel
       width: 4px
       height: 8px
+
       background-color: $color-white
+
       border-radius: 2px
+
       animation: scrollDrop 1.6s infinite
 
-// --- KEYFRAMES COMPILADOS DESDE LA RAÍZ REAL ---
+
+
+// =========================
+// KEYFRAMES
+// =========================
 
 @-webkit-keyframes kenBurnsVideoEffect
   0%
     -webkit-transform: scale(1) translate(0, 0)
     transform: scale(1) translate(0, 0)
+
   100%
     -webkit-transform: scale(1.08) translate(-1%, -1%)
     transform: scale(1.08) translate(-1%, -1%)
 
+
 @keyframes kenBurnsVideoEffect
   0%
     transform: scale(1) translate(0, 0)
+
   100%
     transform: scale(1.08) translate(-1%, -1%)
+
 
 @keyframes scrollDrop
   0%
     opacity: 0
     transform: translateY(-4px)
+
   50%
     opacity: 1
+
   100%
     opacity: 0
     transform: translateY(8px)
 
+
+@keyframes fadeUp
+  0%
+    opacity: 0
+    transform: translateY(60px)
+
+  100%
+    opacity: 1
+    transform: translateY(0)
+
+
+@keyframes fadeIn
+  0%
+    opacity: 0
+
+  100%
+    opacity: 1
+
+
+// =========================
+// RESPONSIVE
+// =========================
+
 @media (max-width: 768px)
+
   .hero-container
-    // Asegura que ocupe todo el alto incluso con barras de navegación móviles
-    height: 90vh 
+    height: 90vh
 
   .hero-content
     padding: 0 15px
-    
-    &__title
-      font-size: 36px // Reducido para que no se desborde
-      margin-bottom: 20px
-      line-height: 1.2
 
-      
+    &__title
+      font-size: 38px
+      line-height: 1.2
+      margin-bottom: 20px
+
     &__text
       font-size: 16px
       margin-bottom: 30px
 
-
+      br
+        display: none
 
     &__actions
       flex-direction: column
+
       gap: 12px
+
       width: 100%
       max-width: 300px
-      margin: 0 auto
 
+      margin: 0 auto
 
     &__button
       width: 100%
+
       padding: 14px 20px
+
       font-size: 15px
+
       text-align: center
 
     &__scroll
-      bottom: 20px // Un poco más arriba para no chocar con el borde inferior
+      bottom: 20px
+
       .mouse
         width: 22px
         height: 36px

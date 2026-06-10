@@ -36,7 +36,7 @@ export class DestinosComponent implements AfterViewInit {
       let count = 0;
       
       // Velocidad: Ajusta el divisor (ej. 100) para hacerlo más lento o rápido
-      const duration = 9000; 
+      const duration = target > 100 ? 2000 : 4000;
       const stepTime = 40;
       const steps = duration / stepTime;
       const increment = target / steps;
