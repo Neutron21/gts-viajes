@@ -14,21 +14,37 @@
       </div>
 
       <!-- Columna Derecha -->
-      <form class="quote-right">
-        <div class="form-grid">
-          <div class="input-group"><label>Nombre completo</label><input type="text" placeholder="Ej. Juan Pérez"></div>
-          <div class="input-group"><label>Correo electrónico</label><input type="email" placeholder="juan@ejemplo.com"></div>
-          <div class="input-group"><label>Teléfono</label><input type="tel" placeholder="55 1234 5678"></div>
-          <div class="input-group"><label>Destino de interés</label><input type="text" placeholder="Ej. París, Cancún..."></div>
-          <div class="input-group"><label>Fecha aproximada</label><input type="text" placeholder="Ej. Diciembre 2024"></div>
-          <div class="input-group"><label>Presupuesto</label><select><option>Selecciona</option></select></div>
-        </div>
-        <div class="input-group full">
-          <label>Mensaje adicional (Opcional)</label>
-          <textarea placeholder="Cuéntanos más detalles sobre tu viaje ideal..."></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Solicitar Cotización</button>
-      </form>
+  <form class="quote-right">
+  <div class="form-grid">
+    <div class="input-group"><label>Nombre completo</label><input type="text" placeholder="Ej. Juan Pérez"></div>
+    <div class="input-group"><label>Correo electrónico</label><input type="email" placeholder="juan@ejemplo.com"></div>
+    <div class="input-group"><label>Teléfono</label><input type="tel" placeholder="55 1234 5678"></div>
+    <div class="input-group"><label>Destino de interés</label><input type="text" placeholder="Ej. París, Cancún..."></div>
+    <div class="input-group"><label>Fecha aproximada</label><input type="text" placeholder="Ej. Diciembre 2024"></div>
+    
+<div class="input-group">
+  <label>Presupuesto</label>
+
+  <div class="custom-select" (click)="toggleDropdown($event)">
+    <div class="select-styled">
+      {{ selectedText }}
+    </div>
+
+    <ul class="select-options" *ngIf="isOpen">
+  <li (click)="selectOption('Económico', $event)">Económico</li>
+  <li (click)="selectOption('Estándar', $event)">Estándar</li>
+  <li (click)="selectOption('Premium / Lujo', $event)">Premium / Lujo</li>
+</ul>
+  </div>
+</div>
+  </div>
+
+  <div class="input-group full">
+    <label>Mensaje adicional (Opcional)</label>
+    <textarea placeholder="Cuéntanos más detalles sobre tu viaje ideal..."></textarea>
+  </div>
+  <button type="submit" class="submit-btn">Solicitar Cotización</button>
+</form>
     </div>
   </div>
 </section>

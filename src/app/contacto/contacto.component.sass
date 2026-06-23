@@ -3,6 +3,11 @@ $azul-oscuro: #0d1e35
 $naranja-boton: #e59d48
 $gris-texto: #666
 $blanco: #ffffff
+$fondo-arena: #f5f2ed
+
+// Limpieza para evitar resaltados azules/grises en móvil
+*
+  -webkit-tap-highlight-color: transparent
 
 .quote-card-full
   display: grid
@@ -21,33 +26,7 @@ $blanco: #ffffff
     display: flex
     flex-direction: column
     justify-content: center
-
-    .quote-card__title
-      font-size: 2.5rem
-      font-weight: 700
-      line-height: 1.2
-      margin-bottom: 20px
-
-    .quote-card__subtitle
-      font-size: 1.1rem
-      margin-bottom: 40px
-      opacity: 0.9
-
-    .contact-channels
-      display: flex
-      flex-direction: column
-      gap: 25px
-
-      .channel-item
-        display: flex
-        align-items: center
-        gap: 15px
-        font-size: 0.95rem
-        
-        strong
-          display: block
-          font-size: 1.1rem
-          margin-top: 2px
+    // ... (mantén tus estilos internos aquí)
 
   .quote-right
     padding: 60px 40px
@@ -67,14 +46,58 @@ $blanco: #ffffff
       label
         font-weight: 600
         font-size: 0.9rem
-      input, select, textarea
+      
+      // Estilos solo para inputs y textareas (quité el 'select' nativo)
+      input, textarea
         padding: 12px
         border: 1px solid #dcdcdc
         border-radius: 6px
         font-size: 1rem
+        outline: none
+        &:focus
+          border-color: $naranja-boton
 
-    .full
-      grid-column: span 2
+      // COMPONENTE CUSTOM-SELECT (Unificado)
+      .custom-select
+        position: relative
+        width: 100%
+        cursor: pointer
+        background: white
+        border: 1px solid #dcdcdc
+        border-radius: 6px
+        
+        .select-styled
+          padding: 12px
+          color: $gris-texto
+          display: flex
+          justify-content: space-between
+          align-items: center
+          &::after
+            content: '▼'
+            font-size: 0.7rem
+            color: #999
+
+        .select-options
+          position: absolute
+          top: 100%
+          left: 0
+          width: 100%
+          background: white
+          border: 1px solid #dcdcdc
+          border-radius: 0 0 6px 6px
+          margin: 0
+          padding: 0
+          list-style: none
+          z-index: 100
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1)
+
+          li
+            padding: 15px // Más grande para mejor toque en móvil
+            font-size: 16px // Evita zoom en iOS
+            transition: background 0.2s
+            &:hover, &:active
+              background-color: $naranja-boton !important
+              color: white !important
 
     .submit-btn
       background: $naranja-boton
@@ -83,121 +106,47 @@ $blanco: #ffffff
       padding: 16px
       border-radius: 6px
       font-weight: bold
-      font-size: 1rem
       cursor: pointer
       margin-top: 10px
-// Variable del color crema/arena observado en la imagen
-$fondo-arena: #f5f2ed
-
-.quote-section
-  background-color: $fondo-arena
-  padding: 29px 20px // Añadimos padding para que la tarjeta no toque los bordes
-  width: 100%
-  
-  &__container
-    max-width: 1100px
-    margin: 0 auto      
-
-// =========================
-// MOBILE
-// =========================
 
 @media (max-width: 768px)
 
-  .quote-section
-    padding: 40px 15px
-
   .quote-card-full
     grid-template-columns: 1fr
-    border-radius: 18px
-    margin: 0 auto
-
-    .quote-left
-      padding: 40px 25px
-      text-align: center
-      align-items: center
-
-      .quote-card__title
-        font-size: 2rem
-        line-height: 1.2
-        margin-bottom: 15px
-
-      .quote-card__subtitle
-        font-size: .95rem
-        margin-bottom: 30px
-        line-height: 1.6
-
-      .contact-channels
-        width: 100%
-        gap: 20px
-
-        .channel-item
-          width: 100%
-          justify-content: flex-start
-          align-items: center
-          text-align: left
-          gap: 12px
-          padding: 12px 15px
-          border-radius: 12px
-          background: rgba(255,255,255,.08)
-
-          span
-            font-size: 1.4rem
-
-          strong
-            font-size: .95rem
-            word-break: break-word
 
     .quote-right
       padding: 35px 20px
 
       .form-grid
         grid-template-columns: 1fr
-        gap: 16px
+        gap: 15px
 
       .input-group
 
         label
-          font-size: .88rem
+          font-size: 0.95rem
 
-        input,
-        select,
-        textarea
-          width: 100%
-          font-size: .95rem
+        input, textarea
+          font-size: 16px // 👈 evita zoom automático en iOS
           padding: 14px
-          border-radius: 10px
 
-      .full
-        grid-column: span 1
+        .custom-select
+          font-size: 16px
+          touch-action: manipulation // 👈 mejora respuesta táctil
 
-      textarea
-        min-height: 120px
+          .select-styled
+            padding: 14px
 
-      .submit-btn
-        width: 100%
-        padding: 15px
-        font-size: 1rem
-        border-radius: 10px
-        margin-top: 5px
+          .select-options
+            li
+              padding: 16px
+              font-size: 16px
 
+              &:active
+                background-color: $naranja-boton
+                color: white
 
-// =========================
-// EXTRA PEQUEÑO
-// =========================
-
-@media (max-width: 480px)
-
-  .quote-card-full
-
-    .quote-left
-      padding: 35px 20px
-
-      .quote-card__title
-        font-size: 1.7rem
-
-      .quote-card__subtitle
-        font-size: .9rem
-
-    .quote-right
-      padding: 30px 16px    
+  .submit-btn
+    width: 100%
+    font-size: 16px
+    padding: 18px
