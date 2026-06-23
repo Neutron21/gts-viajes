@@ -1,41 +1,203 @@
 // Variables
-$color-text: #213555
-$color-link: #213555
-$spacing-large: 60px
-
-.quote-section
-  &__container
-    padding: 0 20px
+$azul-oscuro: #0d1e35
+$naranja-boton: #e59d48
+$gris-texto: #666
+$blanco: #ffffff
 
 .quote-card-full
-  // Se eliminó background-color: $color-primary
-  color: $color-text
-  padding: $spacing-large
+  display: grid
+  grid-template-columns: 38% 62%
+  background: $blanco
   border-radius: 20px
-  width: 100%
-  margin: 0 auto
+  overflow: hidden
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08)
+  max-width: 1100px
+  margin: 40px auto
 
-  .quote-card__title
-    font-size: 2rem
-    margin-bottom: 10px
-
-  .quote-card__subtitle
-    margin-bottom: 30px
-    opacity: 0.8
-
-  .contact-channels
+  .quote-left
+    background: $azul-oscuro
+    color: $blanco
+    padding: 60px 40px
     display: flex
-    gap: 40px
+    flex-direction: column
+    justify-content: center
 
-    .channel-item
+    .quote-card__title
+      font-size: 2.5rem
+      font-weight: 700
+      line-height: 1.2
+      margin-bottom: 20px
+
+    .quote-card__subtitle
+      font-size: 1.1rem
+      margin-bottom: 40px
+      opacity: 0.9
+
+    .contact-channels
       display: flex
-      align-items: center
-      gap: 15px
+      flex-direction: column
+      gap: 25px
 
-      &__value
-        color: $color-link
-        text-decoration: none
-        font-weight: 600
+      .channel-item
+        display: flex
+        align-items: center
+        gap: 15px
+        font-size: 0.95rem
         
-        &:hover
-          text-decoration: underline
+        strong
+          display: block
+          font-size: 1.1rem
+          margin-top: 2px
+
+  .quote-right
+    padding: 60px 40px
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+    .form-grid
+      display: grid
+      grid-template-columns: 1fr 1fr
+      gap: 20px
+
+    .input-group
+      display: flex
+      flex-direction: column
+      gap: 8px
+      label
+        font-weight: 600
+        font-size: 0.9rem
+      input, select, textarea
+        padding: 12px
+        border: 1px solid #dcdcdc
+        border-radius: 6px
+        font-size: 1rem
+
+    .full
+      grid-column: span 2
+
+    .submit-btn
+      background: $naranja-boton
+      color: $blanco
+      border: none
+      padding: 16px
+      border-radius: 6px
+      font-weight: bold
+      font-size: 1rem
+      cursor: pointer
+      margin-top: 10px
+// Variable del color crema/arena observado en la imagen
+$fondo-arena: #f5f2ed
+
+.quote-section
+  background-color: $fondo-arena
+  padding: 29px 20px // Añadimos padding para que la tarjeta no toque los bordes
+  width: 100%
+  
+  &__container
+    max-width: 1100px
+    margin: 0 auto      
+
+// =========================
+// MOBILE
+// =========================
+
+@media (max-width: 768px)
+
+  .quote-section
+    padding: 40px 15px
+
+  .quote-card-full
+    grid-template-columns: 1fr
+    border-radius: 18px
+    margin: 0 auto
+
+    .quote-left
+      padding: 40px 25px
+      text-align: center
+      align-items: center
+
+      .quote-card__title
+        font-size: 2rem
+        line-height: 1.2
+        margin-bottom: 15px
+
+      .quote-card__subtitle
+        font-size: .95rem
+        margin-bottom: 30px
+        line-height: 1.6
+
+      .contact-channels
+        width: 100%
+        gap: 20px
+
+        .channel-item
+          width: 100%
+          justify-content: flex-start
+          align-items: center
+          text-align: left
+          gap: 12px
+          padding: 12px 15px
+          border-radius: 12px
+          background: rgba(255,255,255,.08)
+
+          span
+            font-size: 1.4rem
+
+          strong
+            font-size: .95rem
+            word-break: break-word
+
+    .quote-right
+      padding: 35px 20px
+
+      .form-grid
+        grid-template-columns: 1fr
+        gap: 16px
+
+      .input-group
+
+        label
+          font-size: .88rem
+
+        input,
+        select,
+        textarea
+          width: 100%
+          font-size: .95rem
+          padding: 14px
+          border-radius: 10px
+
+      .full
+        grid-column: span 1
+
+      textarea
+        min-height: 120px
+
+      .submit-btn
+        width: 100%
+        padding: 15px
+        font-size: 1rem
+        border-radius: 10px
+        margin-top: 5px
+
+
+// =========================
+// EXTRA PEQUEÑO
+// =========================
+
+@media (max-width: 480px)
+
+  .quote-card-full
+
+    .quote-left
+      padding: 35px 20px
+
+      .quote-card__title
+        font-size: 1.7rem
+
+      .quote-card__subtitle
+        font-size: .9rem
+
+    .quote-right
+      padding: 30px 16px    
