@@ -29,11 +29,11 @@
   &__grid
     max-width: 1200px
     margin: auto
-
     display: grid
     grid-template-columns: repeat(3, 320px)
     justify-content: center
     gap: 30px
+
 
 .service-card
   position: relative
@@ -84,33 +84,13 @@
       line-height: 1.6
       color: rgba(255,255,255,.88)
 
-@media (max-width: 1100px)
 
+@media (max-width: 1100px)
   .services__grid
     grid-template-columns: repeat(2, 320px)
 
+
 @media (max-width: 768px)
-
-  .services
-    padding: 70px 20px
-
-    &__title
-      font-size: 38px
-
-    &__grid
-      grid-template-columns: 1fr
-      justify-items: center
-
-  .service-card
-    width: 100%
-    max-width: 340px
-    height: 320px
-
-    &__content
-
-      h3
-        font-size: 22px
-  @media (max-width: 768px)
 
   .services
     padding: 70px 20px
@@ -128,7 +108,7 @@
     max-width: 340px
     height: 320px
 
-    opacity: 0
+    opacity: 1
     animation-duration: .9s
     animation-fill-mode: forwards
     animation-timing-function: ease
@@ -140,28 +120,23 @@
       animation-name: slideRight
 
     &__content
-
       h3
         font-size: 22px
 
 
 @keyframes slideLeft
-
   from
     opacity: 0
     transform: translateX(-80px)
-
   to
     opacity: 1
     transform: translateX(0)
 
 
 @keyframes slideRight
-
   from
     opacity: 0
     transform: translateX(80px)
-
   to
     opacity: 1
-    transform: translateX(0)      
+    transform: translateX(0)
