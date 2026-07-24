@@ -14,37 +14,76 @@
       </div>
 
       <!-- Columna Derecha -->
-  <form class="quote-right">
-  <div class="form-grid">
-    <div class="input-group"><label>Nombre completo</label><input type="text" placeholder="Ej. Juan Pérez"></div>
-    <div class="input-group"><label>Correo electrónico</label><input type="email" placeholder="juan@ejemplo.com"></div>
-    <div class="input-group"><label>Teléfono</label><input type="tel" placeholder="55 1234 5678"></div>
-    <div class="input-group"><label>Destino de interés</label><input type="text" placeholder="Ej. París, Cancún..."></div>
-    <div class="input-group"><label>Fecha aproximada</label><input type="text" placeholder="Ej. Diciembre 2024"></div>
-    
-<div class="input-group">
-  <label>Presupuesto</label>
+      <form class="quote-right" (ngSubmit)="enviarCotizacion()">
+        <div class="form-grid">
+          <div class="input-group">
+            <label>Nombre completo</label>
+            <input type="text" [(ngModel)]="formData.nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+          </div>
+          
+          <div class="input-group">
+            <label>Correo electrónico</label>
+            <input type="email" [(ngModel)]="formData.correo" name="correo" placeholder="juan@ejemplo.com" required>
+          </div>
+          
+          <div class="input-group">
+            <label>Teléfono</label>
+            <input type="tel" [(ngModel)]="formData.telefono" name="telefono" placeholder="55 1234 5678" required>
+          </div>
+          
+          <div class="input-group">
+            <label>Destino de interés</label>
+            <input type="text" [(ngModel)]="formData.destino" name="destino" placeholder="Ej. París, Cancún..." required>
+          </div>
+          
+          <div class="input-group">
+            <label>Fecha aproximada</label>
+            <input type="text" [(ngModel)]="formData.fecha" name="fecha" placeholder="Ej. Diciembre 2024" required>
+          </div>
+          
+          <div class="input-group">
+            <label>Presupuesto</label>
+            <div class="custom-select" (click)="toggleDropdown($event)">
+              <div class="select-styled">
+                {{ selectedText }}
+              </div>
+              <ul class="select-options" *ngIf="isOpen">
+                <li (click)="selectOption('Económico', $event)">Económico</li>
+                <li (click)="selectOption('Estándar', $event)">Estándar</li>
+                <li (click)="selectOption('Premium / Lujo', $event)">Premium / Lujo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-  <div class="custom-select" (click)="toggleDropdown($event)">
-    <div class="select-styled">
-      {{ selectedText }}
+        <div class="input-group full">
+          <label>Mensaje adicional (Opcional)</label>
+          <textarea [(ngModel)]="formData.mensaje" name="mensaje" placeholder="Cuéntanos más detalles sobre tu viaje ideal..."></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn" [disabled]="enviando">
+          <span *ngIf="!enviando">Solicitar Cotización</span>
+          <span *ngIf="enviando">Enviando solicitud...</span>
+        </button>
+      </form>
     </div>
-
-    <ul class="select-options" *ngIf="isOpen">
-  <li (click)="selectOption('Económico', $event)">Económico</li>
-  <li (click)="selectOption('Estándar', $event)">Estándar</li>
-  <li (click)="selectOption('Premium / Lujo', $event)">Premium / Lujo</li>
-</ul>
-  </div>
-</div>
   </div>
 
-  <div class="input-group full">
-    <label>Mensaje adicional (Opcional)</label>
-    <textarea placeholder="Cuéntanos más detalles sobre tu viaje ideal..."></textarea>
+  <!-- LOADER CON AVIÓN GIRATORIO -->
+  <div class="loader-overlay" *ngIf="enviando">
+    <div class="loader-content">
+      <div class="plane-spinner">✈️</div>
+      <p>Preparando tu viaje...</p>
+    </div>
   </div>
-  <button type="submit" class="submit-btn">Solicitar Cotización</button>
-</form>
+
+  <!-- MODAL DE ÉXITO -->
+  <div class="custom-modal-overlay" *ngIf="modalExitoVisible">
+    <div class="custom-modal">
+      <div class="modal-icon"></div>
+      <h3>¡Correo enviado con éxito!</h3>
+      <p>Hemos recibido tu solicitud. Uno de nuestros expertos se pondrá en contacto contigo muy pronto.</p>
+      <button class="modal-btn" (click)="cerrarModal()">Aceptar</button>
     </div>
   </div>
 </section>

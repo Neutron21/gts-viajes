@@ -26,7 +26,35 @@ $fondo-arena: #f5f2ed
     display: flex
     flex-direction: column
     justify-content: center
-    // ... (mantén tus estilos internos aquí)
+
+    .quote-card__title
+      font-size: 2.2rem
+      font-weight: 700
+      margin-bottom: 15px
+      line-height: 1.2
+
+    .quote-card__subtitle
+      font-size: 1rem
+      opacity: 0.9
+      margin-bottom: 30px
+      line-height: 1.5
+
+    .contact-channels
+      display: flex
+      flex-direction: column
+      gap: 20px
+
+      .channel-item
+        display: flex
+        align-items: center
+        gap: 15px
+        font-size: 0.95rem
+
+        span
+          font-size: 1.5rem
+
+        strong
+          font-weight: 600
 
   .quote-right
     padding: 60px 40px
@@ -43,19 +71,28 @@ $fondo-arena: #f5f2ed
       display: flex
       flex-direction: column
       gap: 8px
+
       label
         font-weight: 600
         font-size: 0.9rem
-      
-      // Estilos solo para inputs y textareas (quité el 'select' nativo)
+        color: $azul-oscuro
+
       input, textarea
         padding: 12px
         border: 1px solid #dcdcdc
         border-radius: 6px
         font-size: 1rem
         outline: none
+        font-family: inherit
         &:focus
           border-color: $naranja-boton
+
+      textarea
+        resize: vertical
+        min-height: 90px
+
+      &.full
+        grid-column: 1 / -1
 
       // COMPONENTE CUSTOM-SELECT (Unificado)
       .custom-select
@@ -92,9 +129,10 @@ $fondo-arena: #f5f2ed
           box-shadow: 0 4px 10px rgba(0,0,0,0.1)
 
           li
-            padding: 15px // Más grande para mejor toque en móvil
-            font-size: 16px // Evita zoom en iOS
+            padding: 15px
+            font-size: 16px
             transition: background 0.2s
+            color: $gris-texto
             &:hover, &:active
               background-color: $naranja-boton !important
               color: white !important
@@ -108,9 +146,107 @@ $fondo-arena: #f5f2ed
       font-weight: bold
       cursor: pointer
       margin-top: 10px
+      font-size: 1rem
+      transition: opacity 0.2s
+      &:hover
+        opacity: 0.9
+
+/* Loader de avión */
+.loader-overlay 
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0, 0, 0, 0.6)
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 9999
+
+.loader-content 
+  text-align: center
+  color: #fff
+  font-family: inherit
+
+  p 
+    margin-top: 15px
+    font-size: 1.1rem
+    font-weight: 500
+
+.plane-spinner 
+  font-size: 3.5rem
+  display: inline-block
+  animation: flyAround 1.5s linear infinite
+
+@keyframes flyAround 
+  0% 
+    transform: rotate(0deg) translateX(20px) rotate(0deg)
+  
+  100% 
+    transform: rotate(360deg) translateX(20px) rotate(-360deg)
+  
+
+/* Modal de éxito */
+.custom-modal-overlay 
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0, 0, 0, 0.6)
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 9999
+  animation: fadeIn 0.3s ease
+
+.custom-modal 
+  background: #ffffff
+  padding: 30px
+  border-radius: 12px
+  text-align: center
+  max-width: 400px
+  width: 90%
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2)
+  font-family: inherit
+
+  .modal-icon 
+    font-size: 3rem
+    margin-bottom: 15px
+
+  h3 
+    color: $azul-oscuro
+    font-size: 1.5rem
+    margin-bottom: 10px
+
+  p 
+    color: #555
+    font-size: 0.95rem
+    line-height: 1.5
+    margin-bottom: 20px
+
+  .modal-btn 
+    background: $naranja-boton
+    color: white
+    border: none
+    padding: 10px 25px
+    font-size: 1rem
+    border-radius: 6px
+    cursor: pointer
+    font-weight: 600
+    transition: opacity 0.2s
+
+    &:hover 
+      opacity: 0.9
+
+@keyframes fadeIn 
+  from 
+    opacity: 0
+  to 
+    opacity: 1
 
 @media (max-width: 768px)
-
   .quote-card-full
     grid-template-columns: 1fr
 
@@ -122,17 +258,16 @@ $fondo-arena: #f5f2ed
         gap: 15px
 
       .input-group
-
         label
           font-size: 0.95rem
 
         input, textarea
-          font-size: 16px // 👈 evita zoom automático en iOS
+          font-size: 16px
           padding: 14px
 
         .custom-select
           font-size: 16px
-          touch-action: manipulation // 👈 mejora respuesta táctil
+          touch-action: manipulation
 
           .select-styled
             padding: 14px

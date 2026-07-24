@@ -1,27 +1,32 @@
 <nav class="navbar">
-<div class="navbar__logo">
-  <a href="#inicio" (click)="closeMenu()">
-    <img src="assets/logo-gts.png" alt="Logo GTS" class="navbar__logo__img">
-  </a>
-</div>
+  <div class="navbar__logo">
+    <a href="#inicio" (click)="closeMenu()">
+      <img src="assets/logo-gts.png" alt="Logo GTS" class="navbar__logo__img">
+    </a>
+  </div>
 
   <button class="navbar__toggle" (click)="toggleMenu()">
     <span></span><span></span><span></span>
   </button>
 
-  <ul class="navbar__menu" [class.show-menu]="menuVisible">
-    <li class="navbar__item"><a href="#servicios" (click)="closeMenu()">Servicios</a></li>
-    <li class="navbar__item"><a href="#destinos" (click)="closeMenu()">Destinos</a></li>
-    <li class="navbar__item"><a href="#nosotros" (click)="closeMenu()">Nosotros</a></li>
-    
+<ul class="navbar__menu" [class.show-menu]="menuVisible">
     <li class="navbar__item">
-<a href="https://travel-agencyweb.com.mx/?whitelabelid=GTS" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="navbar__button" 
-   (click)="closeMenu()">
-   Contáctanos
-</a>    </li>
+      <a href="#destinos" [class.active]="activeSection === 'destinos'" (click)="closeMenu()">Destinos</a>
+    </li>
+    <li class="navbar__item">
+      <a href="#nosotros" [class.active]="activeSection === 'nosotros'" (click)="closeMenu()">Nosotros</a>
+    </li>
+    <li class="navbar__item">
+      <a href="#contacto" [class.active]="activeSection === 'contacto'" (click)="closeMenu()">Contáctanos</a>
+    </li>
+    <li class="navbar__item">
+        <a href="https://travel-agencyweb.com.mx/?whitelabelid=GTS" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          (click)="closeMenu()">
+          Cotiza
+        </a>   
+    </li>
   </ul>
 </nav>
 
@@ -34,6 +39,6 @@
   <app-footer></app-footer>
 </main>
 
-<a href="https://wa.me/525652418384" target="_blank" class="whatsapp-float">
-  <img src="assets/whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+<a href="https://wa.me/525652418384" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+  <img src="/assets/whats.png" alt="WhatsApp" loading="eager">
 </a>

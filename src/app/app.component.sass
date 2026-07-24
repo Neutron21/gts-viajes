@@ -27,13 +27,13 @@ $color-white: #ffffff
       align-items: center
       text-decoration: none
       cursor: pointer
-    
+      
     // Esta clase asegura el tamaño sin deformar
     &__img
       height: 190px
       width: auto
       display: block
-      margin-top:14px
+      margin-top: 14px
 
   &__menu
     display: flex
@@ -51,8 +51,17 @@ $color-white: #ffffff
       font-size: 18px
       font-weight: 600
       transition: .3s ease
-      &:hover, &.active
+      
+      // Estilo por defecto al pasar el mouse
+      &:hover
         color: $color-accent
+
+      // Estilo cuando el componente está seleccionado (Activo)
+      &.active
+        background: $color-accent
+        color: $color-white
+        padding: 12px 20px
+        border-radius: 12px
 
   &__button
     font-family: $font-jakarta
@@ -80,39 +89,26 @@ $color-white: #ffffff
       border-radius: 2px
 
 // 2. Estilos del Botón WhatsApp
-// 2. Estilos del Botón WhatsApp
-.whatsapp-float
-    position: fixed
-    bottom: 30px
-    right: 30px
-    width: 65px
-    height: 65px
-    background-color: #ffffff // Fondo blanco
-    border-radius: 50%
-    display: flex
-    align-items: center
-    justify-content: center
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2)
-    z-index: 1000
-    transition: all 0.3s ease
-    border: 3px solid #25d366 // El círculo verde exterior
-    cursor: pointer
+.whatsapp-btn 
+  position: fixed
+  top: 120px
+  right: 20px
+  z-index: 20
+  width: 62px
+  height: 62px
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  box-shadow: 0 4px 15px rgba(0,0,0,.25)
+  transition: .3s ease
 
-    &:hover
-        transform: scale(1.1)
-        background-color: #25d366 // Cambia a verde al pasar el mouse
-        border-color: #ffffff      // Cambia el borde a blanco
+  &:hover 
+    transform: scale(1.1)
 
-    // Estilo para la imagen del icono
-    .whatsapp-icon
-        width: 60%  // Ajusta este porcentaje para el tamaño del icono
-        height: 60%
-        object-fit: contain
-        transition: filter 0.3s ease
-
-    // Cambia el icono a blanco cuando haces hover sobre el botón
-    &:hover .whatsapp-icon
-        filter: brightness(0) invert(1)
+  img 
+    width: 57px
+    height: 57px
 
 // 3. Estilos Móviles
 @media (max-width: 768px)
