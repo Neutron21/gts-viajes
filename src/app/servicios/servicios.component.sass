@@ -1,146 +1,187 @@
-.services
-  padding: 100px 20px
-  background: #f5f5f5
+// Tus colores institucionales
+$gts-primary: #d99b2b
+$gts-dark-blue: #24385b
+$gts-dark: #1a1a1a
+$gts-light: #f8f9fa
+$gts-gray: #6c757d
+$gts-white: #ffffff
+$gts-border-radius: 12px
+
+.gts-promos
+  background-color: $gts-light
+  padding: 80px 20px
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+  &__container
+    max-width: 1200px
+    margin: 0 auto
 
   &__header
     text-align: center
-    margin-bottom: 70px
+    max-width: 700px
+    margin: 0 auto 50px auto
+
+  &__badge
+    display: inline-block
+    background-color: rgba($gts-primary, 0.15)
+    color: darken($gts-primary, 10%)
+    font-size: 0.85rem
+    font-weight: 700
+    text-transform: uppercase
+    padding: 6px 14px
+    border-radius: 50px
+    margin-bottom: 15px
+    letter-spacing: 1px
 
   &__title
-    font-size: 52px
-    font-weight: 700
-    color: #111
-    margin-bottom: 20px
-
-  &__divider
-    width: 80px
-    height: 4px
-    background: #2e7d32
-    margin: 0 auto 25px
-    border-radius: 20px
+    font-size: 2.25rem
+    color: $gts-dark-blue
+    font-weight: 800
+    margin-bottom: 15px
 
   &__subtitle
-    max-width: 700px
-    margin: auto
-    color: #666
-    font-size: 18px
-    line-height: 1.7
+    font-size: 1.05rem
+    color: $gts-gray
+    line-height: 1.6
 
   &__grid
-    max-width: 1200px
-    margin: auto
     display: grid
-    grid-template-columns: repeat(3, 320px)
-    justify-content: center
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
     gap: 30px
+    margin-bottom: 60px
 
+  &__cta
+    text-align: center
+    margin-top: 40px
 
-.service-card
-  position: relative
-  height: 340px
-  border-radius: 24px
-  overflow: hidden
-  cursor: pointer
-  transition: transform .4s ease
+// Tarjetas de promoción
+.gts-promo-card
+  background: $gts-white
+  border-radius: $gts-border-radius
+  padding: 35px 30px
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05)
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+  border: 1px solid rgba(0, 0, 0, 0.05)
+  display: flex
+  flex-direction: column
 
   &:hover
-    transform: translateY(-10px)
+    transform: translateY(-8px)
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1)
 
-    .service-card__image
-      transform: scale(1.08)
+  &--highlight
+    border: 2px solid $gts-primary
+    position: relative
 
-    .service-card__overlay
-      background: rgba(0,0,0,.45)
+    &::after
+      content: 'Más Popular'
+      position: absolute
+      top: -12px
+      right: 25px
+      background: $gts-primary
+      color: $gts-white
+      font-size: 0.75rem
+      font-weight: 700
+      padding: 4px 10px
+      border-radius: 20px
+      text-transform: uppercase
 
-  &__image
-    width: 100%
-    height: 100%
-    object-fit: cover
-    transition: transform .6s ease
-
-  &__overlay
-    position: absolute
-    inset: 0
-    background: rgba(0,0,0,.55)
-    transition: .4s ease
+  &__icon
+    width: 60px
+    height: 60px
+    background: rgba($gts-primary, 0.12)
+    color: $gts-primary
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 1.5rem
+    margin-bottom: 25px
 
   &__content
-    position: absolute
-    bottom: 25px
-    left: 20px
-    right: 20px
-    z-index: 2
-    color: white
-    text-align: center
-
     h3
-      font-size: 24px
+      font-size: 1.35rem
+      color: $gts-dark-blue
       margin-bottom: 12px
       font-weight: 700
-      line-height: 1.2
 
     p
-      font-size: 14px
-      line-height: 1.6
-      color: rgba(255,255,255,.88)
+      color: $gts-gray
+      font-size: 0.95rem
+      line-height: 1.5
+      margin-bottom: 20px
 
+  &__list
+    list-style: none
+    padding: 0
+    margin: 0
+    border-top: 1px solid #eee
+    padding-top: 15px
 
-@media (max-width: 1100px)
-  .services__grid
-    grid-template-columns: repeat(2, 320px)
+    li
+      font-size: 0.9rem
+      color: $gts-dark
+      margin-bottom: 8px
+      display: flex
+      align-items: center
+      gap: 10px
 
+      i
+        color: #28a745
+        font-size: 0.8rem
 
-@media (max-width: 768px)
+// Sección de Bancos / Tarjetas participantes (Usando el azul oscuro de fondo)
+.gts-banks
+  background: $gts-dark-blue
+  border-radius: $gts-border-radius
+  padding: 40px
+  text-align: center
+  box-shadow: 0 10px 30px rgba(36, 56, 91, 0.15)
 
-  .services
-    padding: 70px 20px
+  &__title
+    font-size: 1.5rem
+    color: $gts-white
+    font-weight: 700
+    margin-bottom: 10px
 
-    &__title
-      font-size: 38px
+  &__subtitle
+    font-size: 0.95rem
+    color: rgba($gts-white, 0.8)
+    margin-bottom: 30px
 
-    &__grid
-      grid-template-columns: 1fr
-      justify-items: center
-      gap: 25px
+  &__logos
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    gap: 15px
 
-.service-card
-  &__content
-    h3
-      font-size: 22px
+.gts-bank-badge
+  background: rgba($gts-white, 0.1)
+  color: $gts-white
+  font-weight: 600
+  font-size: 0.95rem
+  padding: 12px 24px
+  border-radius: 8px
+  border: 1px solid rgba($gts-white, 0.2)
+  transition: all 0.2s ease
 
-    p
-      font-size: 21px
-      line-height: 1.6
+  &:hover
+    border-color: $gts-primary
+    color: $gts-primary
+    background: $gts-white
 
-    opacity: 1
-    animation-duration: .9s
-    animation-fill-mode: forwards
-    animation-timing-function: ease
+// Botón de CTA Principal (Con tu color dorado/mostaza)
+.gts-btn-primary
+  display: inline-block
+  background-color: $gts-primary
+  color: $gts-white
+  padding: 14px 32px
+  border-radius: 50px
+  font-weight: 700
+  text-decoration: none
+  box-shadow: 0 4px 15px rgba($gts-primary, 0.35)
+  transition: background-color 0.2s ease, transform 0.2s ease
 
-    &:nth-child(odd)
-      animation-name: slideLeft
-
-    &:nth-child(even)
-      animation-name: slideRight
-
-    &__content
-      h3
-        font-size: 22px
-
-
-@keyframes slideLeft
-  from
-    opacity: 0
-    transform: translateX(-80px)
-  to
-    opacity: 1
-    transform: translateX(0)
-
-
-@keyframes slideRight
-  from
-    opacity: 0
-    transform: translateX(80px)
-  to
-    opacity: 1
-    transform: translateX(0)
+  &:hover
+    background-color: darken($gts-primary, 8%)
+    transform: translateY(-2px)
