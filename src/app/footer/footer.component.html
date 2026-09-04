@@ -10,17 +10,24 @@
         </p>
       </div>
 
-      <div class="footer__links-col">
-    
-      </div>
+      <div class="footer__links-col"></div>
 
       <div class="footer__links-col">
         <h4 class="footer__col-title">Legal</h4>
         <ul class="footer__list">
-          <li><a href="/terminos" class="footer__link">Términos y Condiciones</a></li>
-          <li><a href="/privacidad" class="footer__link">Aviso de Privacidad</a></li>
+          <li>
+            <button type="button" class="footer__link footer__btn-link" onclick="document.getElementById('terminosModal').showModal()">
+              Aviso de Privacidad
+            </button>
+          </li>
+          <li><a href="/privacidad" class="footer__link">              Términos y Condiciones
+</a></li>
           <li><a href="/cancelacion" class="footer__link">Política de Cancelación</a></li>
-          <li><a href="/cancelacion" class="footer__link">Permisos de FONATUR</a></li>
+          <li>
+            <button type="button" class="footer__link footer__btn-link" onclick="document.getElementById('pdfModal').showModal()">
+              Permisos de FONATUR
+            </button>
+          </li>
         </ul>
       </div>
 
@@ -42,3 +49,23 @@
 
   </div>
 </footer>
+
+<dialog id="terminosModal" class="pdf-modal">
+  <div class="pdf-modal__header">
+    <h3>Aviso de Privacidad - Global Turismo</h3>
+    <button type="button" onclick="document.getElementById('terminosModal').close()" class="pdf-modal__close">&times;</button>
+  </div>
+  <div class="pdf-modal__body">
+    <iframe src="assets/global-Turistic-Aviso-Privacidad.pdf" width="100%" height="500px" style="border: none;"></iframe>
+  </div>
+</dialog>
+
+<dialog id="pdfModal" class="pdf-modal">
+  <div class="pdf-modal__header">
+    <h3>Permisos de FONATUR - Global Turismo</h3>
+    <button type="button" onclick="document.getElementById('pdfModal').close()" class="pdf-modal__close">&times;</button>
+  </div>
+  <div class="pdf-modal__body">
+    <iframe src="assets/global-turismo.pdf" width="100%" height="500px" style="border: none;"></iframe>
+  </div>
+</dialog>
